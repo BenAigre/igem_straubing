@@ -1,0 +1,35 @@
+{# docs/overrides/home.html #}
+{% extends "main.html" %}
+
+{# Optional: control the <title> in <head> without showing an H1 on page #}
+{% block htmltitle %}
+  {% if page.meta and page.meta.title %}
+    <title>{{ page.meta.title }}</title>
+  {% else %}
+    <title>{{ config.site_name }}</title>
+  {% endif %}
+{% endblock %}
+
+{% block tabs %}
+  {{ super() }}
+  <section class="mdx-container">
+    <div class="md-grid md-typeset">
+      <div class="mdx-hero">
+        <div class="mdx-hero__image">
+          <img src="{{ 'img/banner.png' | url }}" alt="Banner" draggable="false" />
+        </div>
+        <div class="mdx-hero__content">
+          {# CTA or text here #}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{# Do not render the default content title; include only the body if desired #}
+{% block content %}
+  {# Render Markdown body without injecting an auto title #}
+  {{ page.content }}
+{% endblock %}
+
+{% block footer %}{% endblock %}

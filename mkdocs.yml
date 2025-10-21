@@ -1,0 +1,46 @@
+site_name: iGEM TUM Straubing
+site_url: https://mydomain.org/mysite
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tabs
+  custom_dir: docs/overrides
+  palette:
+
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  logo: img/tumcs_igem_png.png
+  favicon: img/favicon.ico
+nav:
+  - Home: index.md
+  - Sponsoring: sponsoring.md
+  - About: about.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/instagram 
+      link: https://www.instagram.com/igem.straubing/
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/igem-tum-campus-straubing/
+    - icon: fontawesome/brands/linktree
+      link: https://linktr.ee/igem_straubing
+
+extra_css:
+  - styles/extra.css
+
+markdown_extensions:
+  - pymdownx.tabbed:
+      alternate_style: true
