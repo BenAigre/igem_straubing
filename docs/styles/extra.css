@@ -5,12 +5,14 @@
   max-width: initial;   /* removes the default ~61rem cap */
   padding-left: 0;      /* optional: remove inner padding if you want true edge-to-edge */
   padding-right: 0;     /* optional */
+  padding-bottom: 0;
 }
 
 /* If you also want content to butt against the edges, reset hero wrappers */
 .mdx-hero {
   margin-left: 0;
   margin-right: 0;
+  margin-bottom: 0;
 }
 
 
