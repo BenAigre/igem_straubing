@@ -1,1 +1,38 @@
 .mdx-hero img { width: 100%; height: auto; display: block; }
+
+/* Let the inner main grid span the full viewport on the homepage only */
+.mdx-container .md-grid {
+  max-width: initial;   /* removes the default ~61rem cap */
+  padding-left: 0;      /* optional: remove inner padding if you want true edge-to-edge */
+  padding-right: 0;     /* optional */
+}
+
+/* If you also want content to butt against the edges, reset hero wrappers */
+.mdx-hero {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+/* Increase logo size (tune the rem/px to your needs) */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 2.4rem;   /* e.g., ~38px on default root font size */
+  width: auto;      /* preserve aspect ratio */
+}
+
+/* Remove default padding for tighter fit */
+.md-header__button.md-logo {
+  margin: 0;
+  padding: 0;
+}
+
+.button-center {
+  display: flex;
+  justify-content: center;
+}
+
+/* Ensure Material button remains shrink-to-content */
+.md-typeset a.md-button {
+  display: inline-block;
+}

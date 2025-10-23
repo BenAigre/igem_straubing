@@ -1,4 +1,4 @@
-site_name: iGEM TUM Straubing
+site_name: iGEM Straubing
 site_url: https://mydomain.org/mysite
 theme:
   name: material
@@ -7,27 +7,14 @@ theme:
     - navigation.tabs
   custom_dir: docs/overrides
   palette:
-
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: cyan
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-
-    # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: indigo
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-  logo: img/tumcs_igem_png.png
+    primary: cyan
+  logo: img/white_font_igem.png
   favicon: img/favicon.ico
 nav:
   - Home: index.md
+  - About us: about.md
   - Sponsoring: sponsoring.md
-  - About: about.md
+  - Contact: Contact.md
 
 extra:
   social:
@@ -41,6 +28,14 @@ extra:
 extra_css:
   - styles/extra.css
 
+copyright: Copyright © 2025 iGEM Straubing. All rights reserved.
+
 markdown_extensions:
+  - attr_list
+  - md_in_html
   - pymdownx.tabbed:
       alternate_style: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.blocks.caption
