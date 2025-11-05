@@ -12,11 +12,11 @@ The iGEM Straubing team represents the **student-led** synthetic biology team fr
 
 Our team combines diverse expertise from chemical biotechnology, bioprocessing, biogenic energy utilization, and business exertise—reflecting the unique interdisciplinary and international character of our campus. This diversity is our strength, enabling us to approach complex scientific challenges from multiple perspectives and develop holistic, innovative solutions.
 
-### TUM Straubing Campus
+### Technical University of Munich Campus Straubing
 
 <div class="grid" markdown>
 
-The TUM Campus Straubing for Biotechnology and Sustainability is an Integrative Research Institute of the Technical University of Munich, uniquely positioned at the intersection of natural sciences, biotechnology, engineering, and economics. Located in Straubing—the region of renewable resources—our campus is at the heart of developing and scaling biotechnological processes.
+The Technical University of Munich (TUM) Campus Straubing for Biotechnology and Sustainability is an Integrative Research Institute of the Technical University of Munich, uniquely positioned at the intersection of natural sciences, biotechnology, engineering, and economics. Located in Straubing—the region of renewable resources—our campus is at the heart of developing and scaling biotechnological processes.
 
 ![tumcs](img/tumcs_ma.png){ align=right }
 
@@ -43,14 +43,21 @@ Our campus offers interdisciplinary study programs including:
 This multidisciplinary environment provides our team with access to cutting-edge facilities, diverse expertise, and a community committed to developing sustainable technologies that address pressing global issues.
 
 ## The iGEM Competition
+The iGEM Competition is an annual, worldwide synthetic biology event aimed at undergraduate university students, as well as high school and graduate students. Multidisciplinary teams work together to design, build, test, and measure a system of their own design using interchangeable biological parts and standard molecular biology techniques. You can find more information in the official iGEM documentation:
+
+* [What is the process that an iGEM project goes through?](https://competition.igem.org/about/navigating-igem)
 
 ## Our Achievements at iGEM
 
 ### iGEM 2024: Bluebear Bio Project
 
-In our inaugural year competing as the very first iGEM team from TUM Campus Straubing, we achieved remarkable success with our [**Bluebear Bio: Cell-Free for All**](https://2024.igem.wiki/tum-straubing/) project.
+<div class="grid" markdown>
 
-Our 2024 project focused on developing desiccated cell-free transcription-translation (TXTL) systems to make synthetic biology tools more accessible worldwide. By harnessing tardigrade proteins' resilience and developing cost-effective energy mixes, we created a solution that eliminates cold chain requirements and significantly reduces expenses. This innovation opens new opportunities for labs in resource-limited areas, advancing democratization of biotechnology.:
+In our inaugural year competing as the very first iGEM team from TUM Campus Straubing, we achieved remarkable success with our [**Bluebear Bio: Cell-Free for All**](https://2024.igem.wiki/tum-straubing/) project. <br><br>
+Our 2024 project focused on developing desiccated cell-free transcription-translation (TXTL) systems to make synthetic biology tools more accessible worldwide. By harnessing tardigrade proteins' resilience and developing cost-effective energy mixes, we created a solution that eliminates cold chain requirements and significantly reduces expenses. This innovation opens new opportunities for labs in resource-limited areas, advancing democratization of biotechnology.
+
+![jamboree](img/jamboree.jpeg){ align=left }
+</div>
 
 ??? success "**Awards & Recognition:**"
 
@@ -93,11 +100,11 @@ You can join one of many specialised teams:
     Computational modeling, data analysis, and bioinformatics
 
 
-- **Engineering:**
+- **Human Practices & Social Media:**
 
     ---
 
-    Technical development and system optimization
+    Social Engagement in the Team, on Campus and Online
 
 - **Project Management:**
 
@@ -107,7 +114,6 @@ You can join one of many specialised teams:
 </div>
 <br>
 <span style="color: #0066b3;">**For more information on how to join or contribute, please shoot us a message and:**</span>
-
 <div class="grid" markdown>
 
 [Follow us on Instagram](https://www.instagram.com/igem.straubing/){ .md-button .md-button--primary }

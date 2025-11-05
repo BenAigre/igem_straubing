@@ -7,11 +7,23 @@ hide:
   - footer
 ---
 
-<div class="mdx-hero"></div>
+<div class="spacer-10"></div>
+<div class="spacer-10"></div>
+<div class="spacer-10"></div>
+<div class="spacer-10"></div>
+<div class="spacer-10"></div>
+<div class="spacer-10"></div>
+<div class="spacer-10"></div>
+<div class="spacer-10"></div>
+<div class="spacer-10"></div>
 
-#
+<div class="homepage-grid" markdown >
+
+[Sponsor Us](sponsoring){ .md-button  }
+
+[Our Projects](about/#our-achievements-at-igem){ .md-button }
+
+[Join Us](about/#join-us){ .md-button }
 
 
-<!-- [Learn more](https://www.igem-straubing.de/mysite/about/){ .md-button .md-button--primary align=center} -->
-
-
+</div>

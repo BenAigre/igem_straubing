@@ -21,23 +21,16 @@
   <section class="mdx-container">
     <div class="md-grid md-typeset">
       <div class="mdx-hero">
-        <div class="mdx-hero__image">
-          <img src="{{ 'img/example_banner.png' | url }}" alt="Banner" draggable="false" />
-        </div>
         <div class="mdx-hero__content">
-          {# CTA or text here #}
+          {{ page.content }}  
+        </div>
+        <div class="mdx-hero__image">
+          <!--Use this for the image as content not background!-->
+          <!--<img src="{{ 'img/example_banner.png' | url }}" alt="Banner" draggable="false" />--> 
         </div>
       </div>
     </div>
   </section>
 {% endblock %}
-
-<!--
-{# Do not render the default content title; include only the body if desired #}
-{% block content %}
-  {# Render Markdown body without injecting an auto title #}
-  {{ page.content }}
-{% endblock %}
--->
 
 

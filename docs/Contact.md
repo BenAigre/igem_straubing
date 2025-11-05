@@ -10,7 +10,7 @@ info@igem-straubing.de
 
 ## Anschrift
 
-iGEM Straubing / Prof Niederholtmeyer
+iGEM Straubing e.V. / Prof Niederholtmeyer
 
 Technical University of Munich
 
