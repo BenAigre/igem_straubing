@@ -8,7 +8,7 @@ theme:
   custom_dir: docs/overrides
   palette:
     primary: cyan
-  logo: img/white_font_igem.png
+  logo: img/tumcs_igem_png.png
   favicon: img/favicon.ico
 nav:
   - Home: index.md
