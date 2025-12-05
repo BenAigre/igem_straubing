@@ -3,7 +3,6 @@ site_url: https://igem-straubing.de
 theme:
   name: material
   features:
-    - navigation.instant
     - navigation.tabs
   custom_dir: docs/overrides
   palette:

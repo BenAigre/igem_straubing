@@ -75,3 +75,44 @@
   max-width: 35rem;             
   place-content: center;       
 }
+
+/* REQUIRED: Let the inner main grid span the full viewport on the homepage only */
+.mdx-container .md-grid {
+  max-width: initial;   
+  padding-left: 0;     
+  padding-right: 0;     
+  padding-bottom: 0;
+}
+
+/* This is only for image as content (init design) */
+.mdx-hero img { width: 100%; height: auto; display: block; }
+
+.mdx-hero {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+
+
+/* Increase logo size and fix padding */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 2.4rem;  
+  width: auto;      
+}
+
+.md-header__button.md-logo {
+  margin: 0;
+  padding: 0;
+}
+
+/* centered button  */
+.button-center {
+  display: flex;
+  justify-content: center;
+}
+
+/* shrink-to-content */
+.md-typeset a.md-button {
+  display: inline-block;
+}
