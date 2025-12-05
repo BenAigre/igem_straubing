@@ -26,4 +26,6 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install mkdocs-material
+      # Create the CNAME file in the docs folder before building
+      - run: echo "igem-straubing.de" > docs/CNAME
       - run: mkdocs gh-deploy --force
