@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - iGEM Straubing</title>
+    <!-- Tailwind CSS for layout and typography -->
+    <script src="assets/external/cdn.tailwindcss.com.js"></script>
+    <!-- Google Fonts: Roboto (Standard for MkDocs Material) -->
+    <link href="assets/external/fonts.googleapis.com/css2.16d18cc6.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --tum-blue: #0065BD;
+            --igem-green: #95C11E;
+            --cyan-light: #E0F7FA;
+            --text-main: #4051b5;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #fcfcfc;
+            color: #333;
+        }
+
+        /* --- Hero Section Styling --- */
+        .hero-container {
+            position: relative;
+            height: 90vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: radial-gradient(circle at top left, #f0faff, #ffffff);
+        }
+
+        #heroCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            max-width: 800px;
+            /* Glassmorphism effect */
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(0, 101, 189, 0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* Center Logo Styling */
+        .hero-logo {
+            height: 120px;
+            width: auto;
+            margin: 0 auto 1.5rem auto;
+            display: block;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: -webkit-linear-gradient(45deg, var(--tum-blue), #00a8cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #555;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-subtitle strong {
+            color: var(--tum-blue);
+            font-weight: 500;
+        }
+
+        /* --- Buttons --- */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--tum-blue);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(0, 101, 189, 0.3);
+            border: 2px solid var(--tum-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: #005299;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 101, 189, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--tum-blue);
+            padding: 0.8rem 2rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 2px solid var(--tum-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 101, 189, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* --- DNA Divider Container --- */
+        .dna-divider {
+            position: relative;
+            height: 140px; /* Increased height to fit the wave */
+            width: 100%;
+            background: #fcfcfc;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #dividerCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- Cards Section --- */
+        .content-section {
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 2;
+            background: #fcfcfc; /* White/Light background */
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2; /* Ensures cards are clickable above canvas */
+        }
+
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--tum-blue), var(--igem-green));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--tum-blue);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Animation helper */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-container { height: 80vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Mockup -->
+    <nav class="w-full bg-white border-b border-gray-200 py-4 px-6 flex justify-between items-center sticky top-0 z-50 shadow-sm">
+        <a href="." class="flex items-center gap-3 hover:opacity-80 transition">
+            <img src="img/tumcs_igem_png.png" alt="Logo" class="h-10">
+            <span class="font-bold text-xl tracking-tight text-gray-800">iGEM Straubing</span>
+        </a>
+        
+        <div class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+            
+                <a href="." class="hover:text-blue-700 transition">Home</a>
+            
+                <a href="about/" class="hover:text-blue-700 transition">About us</a>
+            
+                <a href="sponsoring/" class="hover:text-blue-700 transition">Partnerships</a>
+            
+                <a href="Contact/" class="hover:text-blue-700 transition">Contact</a>
+            
+        </div>
+    </nav>
+
+    <!-- Hero Section with Interactive Sprite Canvas -->
+    <div class="hero-container">
+        <!-- Canvas 1: Floating Sprites -->
+        <canvas id="heroCanvas"></canvas>
+        
+        <div class="hero-content">
+            <img src="img/tumcs_igem_png.png" alt="iGEM Straubing Logo" class="hero-logo">
+            
+            <h1 class="hero-title">Synthetic Biology<br>for Sustainability</h1>
+            <p class="hero-subtitle">
+                Engineering biological systems to solve global challenges.<br>
+                <strong>Made in Straubing.</strong>
+            </p>
+            
+            <div class="btn-group">
+                <a href="about#our-achievements-at-igem" class="btn-primary">Our Projects</a>
+                <a href="about#join-us" class="btn-secondary">Join the Team</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- DNA Animation Divider (Replaces static image) -->
+    <div class="dna-divider">
+        <canvas id="dividerCanvas"></canvas>
+    </div>
+
+    <!-- Main Content Grid -->
+    <section class="content-section" id="projects">
+        <div class="text-center mb-12 relative z-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">What We Do</h2>
+            <div class="h-1 w-20 bg-blue-600 mx-auto rounded"></div>
+        </div>
+
+        <div class="grid-cards">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-icon">🧬</div>
+                <h3>Our Latest Project</h3>
+                <p><strong>Bluebear Bio:</strong> Developing desiccated cell-free transcription-translation systems using tardigrade proteins to democratize biotechnology access.</p>
+                <a href="https://2024.igem.wiki/tum-straubing/" class="text-blue-600 font-medium mt-4 inline-block hover:underline">Learn more →</a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <h3>Partnerships</h3>
+                <p>We collaborate with industry leaders to bridge the gap between academic research and real-world bioprocessing applications.</p>
+                <a href="sponsoring" class="text-blue-600 font-medium mt-4 inline-block hover:underline">Sponsor us →</a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-icon">🧪</div>
+                <h3>Join the Lab</h3>
+                <p>From Wet Lab to Human Practices, we are looking for passionate students to shape the future of synthetic biology.</p>
+                <a href="about#join-us" class="text-blue-600 font-medium mt-4 inline-block hover:underline">Apply now →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Mockup -->
+    <footer class="bg-gray-900 text-white py-12 relative z-10">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="inline-block p-2">
+                <img src="img/scientist_drawing.png" alt="Logo" class="h-20 mx-auto opacity-80">
+            </div>
+            <p class="text-gray-400 mb-4">TUM Campus Straubing for Biotechnology and Sustainability</p>
+            <p class="text-gray-600 text-sm">© 2025 iGEM Straubing</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT 1: Hero Animation (Floating Sprites) -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('heroCanvas');
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let particles = [];
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight; // Hero is approx full viewport
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            const mouse = { x: undefined, y: undefined };
+            window.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = e.clientX - rect.left;
+                mouse.y = e.clientY - rect.top;
+            });
+            window.addEventListener('mouseout', () => {
+                mouse.x = undefined;
+                mouse.y = undefined;
+            });
+
+            // Sprite Assets
+            const imageUrls = [
+                "img/microbe (1).png",
+                "img/microbe (2).png",
+                "img/microbe (3).png",
+                "img/microbe (4).png"
+            ];
+            const loadedImages = [];
+            
+            imageUrls.forEach(src => {
+                const img = new Image();
+                img.src = src;
+                loadedImages.push(img);
+            });
+
+            class Particle {
+                constructor() {
+                    this.init();
+                }
+                init() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.size = Math.random() * 50 + 50; 
+                    this.imageIndex = Math.floor(Math.random() * loadedImages.length);
+                    this.alpha = Math.random() * 0.4 + 0.2; 
+                    this.angle = Math.random() * Math.PI * 2;
+                    this.spinSpeed = (Math.random() - 0.5) * 0.02;
+                }
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.angle += this.spinSpeed;
+
+                    if (mouse.x) {
+                        const dx = mouse.x - this.x;
+                        const dy = mouse.y - this.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < 150) {
+                            const force = (150 - distance) / 150;
+                            const repulsion = force * 2;
+                            this.x -= (dx / distance) * repulsion;
+                            this.y -= (dy / distance) * repulsion;
+                        }
+                    }
+
+                    if (this.x < -50) this.x = width + 50;
+                    if (this.x > width + 50) this.x = -50;
+                    if (this.y < -50) this.y = height + 50;
+                    if (this.y > height + 50) this.y = -50;
+                }
+                draw() {
+                    if (!loadedImages[this.imageIndex] || !loadedImages[this.imageIndex].complete) return;
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.angle);
+                    ctx.globalAlpha = this.alpha;
+                    ctx.drawImage(loadedImages[this.imageIndex], -this.size / 2, -this.size / 2, this.size, this.size);
+                    ctx.restore();
+                }
+            }
+
+            function initParticles() {
+                particles = [];
+                const particleCount = Math.min(50, (width * height) / 15000);
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+            }
+            initParticles();
+            window.addEventListener('resize', initParticles);
+
+            function animate() {
+                requestAnimationFrame(animate);
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => { p.update(); p.draw(); });
+            }
+            animate();
+        })();
+    </script>
+
+    <!-- SCRIPT 2: Divider Animation (Procedural Twisting DNA - Horizontal) -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('dividerCanvas');
+            const ctx = canvas.getContext('2d');
+            const container = document.querySelector('.dna-divider');
+            let width, height;
+
+            // Config for Lower DNA
+            const DNA_CONFIG = {
+                strandColor1: '#0065BD', 
+                strandColor2: '#95C11E',
+                nodeRadius: 3.5,
+                basePairGap: 18, 
+                amplitude: 35, // Adjusted for divider height
+                frequency: 0.015,
+                speed: 0.02,    
+                tangleIntensity: 10 // Very subtle vertical movement for divider
+            };
+
+            function resize() {
+                width = canvas.width = container.offsetWidth;
+                height = canvas.height = container.offsetHeight;
+            }
+            window.addEventListener('resize', resize);
+            window.addEventListener('load', resize); // Ensure correct size after load
+            resize();
+
+            let time = 0;
+
+            function hexToRgba(hex, alpha) {
+                const r = parseInt(hex.slice(1, 3), 16);
+                const g = parseInt(hex.slice(3, 5), 16);
+                const b = parseInt(hex.slice(5, 7), 16);
+                return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                
+                const numCols = Math.ceil(width / DNA_CONFIG.basePairGap) + 5;
+                ctx.lineWidth = 1.5;
+
+                for (let i = -5; i < numCols; i++) {
+                    const xBase = i * DNA_CONFIG.basePairGap;
+                    
+                    // The Tangle - gentle wave centered in container
+                    const tangleOffset = Math.sin(xBase * 0.002 + time * 0.5) * DNA_CONFIG.tangleIntensity;
+                    const centerY = (height / 2) + tangleOffset;
+
+                    // The Rotation
+                    const angle = (xBase * DNA_CONFIG.frequency) - (time * 2);
+                    
+                    const zDepth1 = Math.cos(angle); 
+                    const zDepth2 = Math.cos(angle + Math.PI);
+                    
+                    const y1 = centerY + Math.sin(angle) * DNA_CONFIG.amplitude;
+                    const y2 = centerY + Math.sin(angle + Math.PI) * DNA_CONFIG.amplitude;
+                    
+                    const x1 = xBase + zDepth1 * 5;
+                    const x2 = xBase + zDepth2 * 5;
+
+                    // Connection Line
+                    const lineOpacity = 0.2 + (Math.abs(Math.sin(angle)) * 0.3);
+                    ctx.beginPath();
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x2, y2);
+                    ctx.strokeStyle = `rgba(180, 180, 180, ${lineOpacity})`;
+                    ctx.stroke();
+
+                    // Strand 1
+                    const scale1 = 0.6 + ((zDepth1 + 1) / 2) * 0.8;
+                    const alpha1 = 0.3 + ((zDepth1 + 1) / 2) * 0.7;
+                    ctx.beginPath();
+                    ctx.arc(x1, y1, DNA_CONFIG.nodeRadius * scale1, 0, Math.PI * 2);
+                    ctx.fillStyle = hexToRgba(DNA_CONFIG.strandColor1, alpha1);
+                    ctx.fill();
+
+                    // Strand 2
+                    const scale2 = 0.6 + ((zDepth2 + 1) / 2) * 0.8;
+                    const alpha2 = 0.3 + ((zDepth2 + 1) / 2) * 0.7;
+                    ctx.beginPath();
+                    ctx.arc(x2, y2, DNA_CONFIG.nodeRadius * scale2, 0, Math.PI * 2);
+                    ctx.fillStyle = hexToRgba(DNA_CONFIG.strandColor2, alpha2);
+                    ctx.fill();
+                }
+
+                time += DNA_CONFIG.speed;
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
+    </script>
+</body>
+</html>
